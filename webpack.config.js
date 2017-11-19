@@ -1,6 +1,8 @@
 let helpers = require('./helpers');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let webpack = require('webpack');
+let copyWebpackPlugin=require("copy-webpack-plugin");
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let config= {
     entry: {
         app:helpers.root('src/index.ts'),
@@ -32,20 +34,16 @@ let config= {
                 }
             },
             {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
+                test: /\.ts$/,
+                loaders: ['ts-loader'],
                 exclude: /node_modules/,
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                }
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
+                test: /\.css$/,
+                loaders:  ExtractTextPlugin.extract( "raw-loader")
+
             }
+
         ]
     },
     resolve: {
@@ -70,7 +68,16 @@ let config= {
             template: 'src/index.html',
              hash : false,
             chunks:['vendor', 'app']
-         })
+         }),
+        new ExtractTextPlugin("assets/css/[name].css", {allChunks: true}),
+
+        new copyWebpackPlugin([{
+            from: 'node_modules/bootstrap/dist/fonts',
+            to:helpers.root("dist/assets/fonts")
+        },{
+            from: 'node_modules/font-awesome/fonts',
+            to:helpers.root("dist/assets/fonts")
+        }])
     ]
 };
 if (process.env.NODE_ENV === 'production') {
