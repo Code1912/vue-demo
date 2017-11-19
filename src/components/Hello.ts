@@ -12,10 +12,12 @@ export default class HelloComponent  extends Vue {
     name2(){
         return this.name;
     }
+
     // 组件方法也可以直接声明为实例的方法
     @Emit("change")
     onClick (): void {
         window.alert(this.message);
+        //this.$emit()
     }
     beforeRouteEnter () {
         console.log('beforeRouteEnter')
