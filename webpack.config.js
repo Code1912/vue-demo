@@ -41,8 +41,12 @@ let config= {
             {
                 test: /\.css$/,
                 loaders:  ExtractTextPlugin.extract( "raw-loader")
-
-            }
+            },
+            {
+                test: /\.html$/,
+                loaders: ['raw-loader'],
+                exclude: /node_modules/,
+            },
 
         ]
     },
@@ -61,6 +65,10 @@ let config= {
     },
     devtool: '#source-map',
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        }),
         new webpack.optimize.CommonsChunkPlugin({
                  name: [ 'vendor']
         }),
