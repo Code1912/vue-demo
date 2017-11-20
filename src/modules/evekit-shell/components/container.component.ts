@@ -1,10 +1,11 @@
-import { Component, Emit, Prop } from 'vue-property-decorator'
-import  Vue from 'vue'
+import { Emit  } from 'vue-property-decorator'
+import Component from 'vue-class-component'
+import  Vue,{VNode} from 'vue'
 @Component({
     template: require('./container.component.html')
 })
-export default class ContainerComponent  extends Vue {
-    @Prop()
+export   class ContainerComponent  extends Vue {
+    vvv:VNode=null;
     name: string;
     searchText:string="";
     // 初始数据可以直接声明为实例的属性
@@ -17,13 +18,14 @@ export default class ContainerComponent  extends Vue {
         return this.name;
     }
     onSearch():void{
-  alert(1)
+        console.log(this.vvv)
+     console.log(arguments)
     }
     onLogout(){
 
     }
     // 组件方法也可以直接声明为实例的方法
-    @Emit("change")
+
     onClick (): void {
         window.alert(this.message);
         //this.$emit()

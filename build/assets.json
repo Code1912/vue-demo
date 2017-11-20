@@ -1,0 +1,55 @@
+{
+  "dev": {
+    "js": [
+      "./node_modules/core-js/client/shim.js",
+      "./node_modules/vue/dist/vue.js",
+      "./node_modules/vue-router/dist/vue-router.js",
+      "./node_modules/vue-class-component/dist/vue-class-component.js",
+      "./node_modules/vue-property-decorator/lib/vue-property-decorator.umd.js",
+      "./node_modules/iview/dist/iview.js",
+      "./node_modules/iview/dist/locale/zh-CN.js",
+      "./node_modules/lodash/lodash.js",
+      "./node_modules/jquery/dist/jquery.js",
+      "./node_modules/bootstrap/dist/js/bootstrap.js",
+      "./node_modules/admin-lte/dist/js/adminlte.js",
+      "./node_modules/toastr/toastr.js"
+    ],
+    "css": [
+      "./node_modules/font-awesome/css/font-awesome.css",
+      "./node_modules/bootstrap/dist/css/bootstrap.css",
+      "./node_modules/toastr/build/toastr.css",
+      "./node_modules/iview/dist/styles/iview.css",
+      "./node_modules/admin-lte/dist/css/AdminLTE.css",
+      "./node_modules/admin-lte/dist/css/skins/_all-skins.css"
+    ]
+  },
+  "prd": {
+    "js": [
+      "./node_modules/core-js/client/shim.min.js",
+      "./node_modules/vue/dist/vue.min.js",
+      "./node_modules/vue-router/dist/vue-router.min.js",
+      "./node_modules/vue-class-component/dist/vue-class-component.min.js",
+      "./node_modules/vue-property-decorator/lib/vue-property-decorator.umd.js",
+      "./node_modules/iview/dist/iview.min.js",
+      "./node_modules/iview/dist/locale/zh-CN.js",
+      "./node_modules/lodash/lodash.min.js",
+      "./node_modules/jquery/dist/jquery.min.js",
+      "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "./node_modules/admin-lte/dist/js/adminlte.min.js",
+      "./node_modules/toastr/build/toastr.min.js"
+    ],
+    "css": [
+      "./node_modules/font-awesome/css/font-awesome.min.css",
+      "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "./node_modules/toastr/build/toastr.min.css",
+      "./node_modules/iview/dist/styles/iview.css",
+      "./node_modules/admin-lte/dist/css/AdminLTE.min.css",
+      "./node_modules/admin-lte/dist/css/skins/_all-skins.min.css"]
+  },
+  "fonts":[
+    "./node_modules/bootstrap/dist/fonts/*" ,
+    "./node_modules/font-awesome/fonts/*",
+    "./node_modules/iview/dist/styles/fonts/*"
+  ],
+  "img":[]
+}

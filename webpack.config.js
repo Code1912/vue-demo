@@ -5,7 +5,7 @@ let copyWebpackPlugin=require("copy-webpack-plugin");
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let config= {
     entry: {
-        app:helpers.root('src/index.ts'),
+        app:helpers.root('src/modules/evekit-shell/app.ts'),
         vendor:helpers.root('src/vendor.ts')
     },
     output: {
@@ -55,7 +55,10 @@ let config= {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         }
-    },
+    },  externals:[{
+        iview: 'iview',
+
+    }],
     devServer: {
         historyApiFallback: true,
         noInfo: true
