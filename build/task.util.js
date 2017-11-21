@@ -8,7 +8,7 @@ let args = helpers.args();
 let gulp=require('gulp4');
 let browserSync = require("browser-sync");
 let reload = browserSync.reload;
-
+let del=require('del')
 let minifyJS = function (gulpStream) {
     if (args.minify) {
         return gulpStream.pipe(uglify({mangle: false}))
@@ -93,6 +93,7 @@ function dts(module) {
         src=helpers.root(`src/evekit-core/**/*.ts`);
         dest = helpers.root(`node_modules/@types/evekit/core`);
     }
+  //  del.sync([dest]);
     let tsProject = ts.createProject( helpers.root('tsconfig.json'), {
         outDir: dest,
         declaration: true,

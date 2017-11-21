@@ -9,3 +9,4 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     [key: string]: any;
 }
 declare  const  window:Window;
+declare  const $:any;

@@ -4,8 +4,11 @@ import {ContainerComponent} from "./components/index";
 import VueRouter from 'vue-router'
 import  DashboardComponent  from "./pages/dashboard.component";
 import Component from 'vue-class-component'
-import './common/es6-extend'
-import './app.css'
+import './common/es6.extend'
+import { router} from "./app.routing";
+import './app.css';
+import {Error500Component} from "./pages/error500.component";
+
 @Component({
     template: require("./app.html")
 })
@@ -18,36 +21,23 @@ class  App extends  Vue {
     userInfo={
         userName:"Test",
         img:""
-    }
-    name2(){
-        return this.name;
-    }
-    onSearch():void{
-        console.log(arguments)
+    };
+
+    onSearch(){
+        console.log(arguments);
+        console.log(router);
+        router.addRoutes([{
+            path:"/500",
+            component:Error500Component
+        }])
+
     }
     onLogout(){
 
     }
-    // 组件方法也可以直接声明为实例的方法
-
-    onClick (): void {
-        window.alert(this.message);
-        //this.$emit()
-    }
-    beforeRouteEnter () {
-        console.log('beforeRouteEnter')
-    }
-
-    beforeRouteLeave () {
-        console.log('beforeRouteLeave')
-    }
 }
 Vue.use(iView);
 Vue.use(VueRouter);
-const router = new VueRouter({ routes:[
-    { path: '/', component: DashboardComponent },
-    { path: '/dashboard', component: DashboardComponent }
-]});
 
 new App({
     el: "#app",
