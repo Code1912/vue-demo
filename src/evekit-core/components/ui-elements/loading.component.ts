@@ -1,4 +1,4 @@
-import { Component, Emit, Prop } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
 import  Vue from 'vue'
 import "./loading.component.css"
 @Component({
@@ -6,6 +6,8 @@ import "./loading.component.css"
 })
 export  class LoadingComponent extends Vue {
 
+    @Prop()
     isShow:boolean=false;
+
 
 }

@@ -24,7 +24,7 @@ function buildModuleTask(moduleName) {
             ]
         });
         config.entry[`${moduleName}`] = helpers.root(`src/modules/${moduleName}/app.ts`);
-        console.log("modeul:",config)
+       // console.log("modeul:",config)
         taskUtil.webpackCompile(config, done);
     });
     return taskName;

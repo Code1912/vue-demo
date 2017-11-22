@@ -81,6 +81,8 @@
     </aside>
     <div class="content-wrapper"  >
         <section class="content">
+            <button @click="onLoading">Test Loading</button>
+            {{isShowLoading}}
             <router-view></router-view>
         </section>
 
@@ -119,4 +121,5 @@
         <strong>Copyright &copy; 2016-2100 <a href="javascript:void(0)">Eric</a>.</strong> All rights reserved.
     </footer>
 
+    <loading-component v-bind:is-show="isShowLoading"></loading-component>
 </div>

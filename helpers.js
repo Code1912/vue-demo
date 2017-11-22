@@ -11,7 +11,7 @@ function  args() {
 
     argObj.env = argObj.env || "dev";
     argObj.minify=  (argObj.minify||"").trim().toLocaleLowerCase()==='true';
-    console.log(argObj);
+    //console.log(argObj);
     return argObj;
 }
 module.exports.root = root;

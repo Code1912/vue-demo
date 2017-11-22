@@ -70,18 +70,22 @@ let config= {
         'vue-property-decorator':"VuePropertyDecorator",
         'vue-class-component':'VueClassComponent'
     }, function (context, request, callback) {
-        console.log(request)
+        //console.log(request)
         if (/^vue$/.test(request)) {
-            return callback(null, `var {default:Vue}`);
+            return callback(null, `var Object.assign({default:Vue},Vue)`);
         }
         if (/^vue-router$/.test(request)) {
-            return callback(null, `var {default:VueRouter}`);
+            return callback(null, `var  Object.assign({default:VueRouter},VueRouter)`);
         }
         if (/^iview$/.test(request)) {
             return callback(null, `var Object.assign({default:iview},iview)`);
         }
         if (/^evekit\//.test(request)) {
+
             let key = request.split('/')[1];
+            if(key==="core"){
+                return callback(null, `var evekit['evekit-core']`);
+            }
             return callback(null, `var evekit['${key}']`);
         }
         callback();

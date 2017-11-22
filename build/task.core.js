@@ -10,7 +10,7 @@ let fs=require('fs');
 gulp.task("core:dts", function () {
     return taskUtil.dts("evekit-core")
         .pipe(through.obj(function (chunk, enc, cb) {
-            fs.writeFileSync( helpers.root("node_modules/@types/evekit/index.d.ts") ,"export * from './core/app'","utf-8");
+            fs.writeFileSync( helpers.root("node_modules/@types/evekit/core/index.d.ts") ,"export * from './app'","utf-8");
             cb(null, chunk)
         }));
 });
@@ -23,7 +23,7 @@ gulp.task("core:ts", (done) => {
             new ExtractTextPlugin('[name].css')
         ]
     });
-    console.log(config);
+  //  console.log(config);
     taskUtil.webpackCompile(config, done);
 });
 gulp.task("core:build",done=>{
