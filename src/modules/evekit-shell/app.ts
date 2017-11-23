@@ -8,7 +8,7 @@ import './common/es6.extend'
 import { router} from "./app.routing";
 import './app.css';
 import {Error500Component} from "./pages/error500.component";
-import {LoadingComponent,loadingService} from 'evekit/core'
+import {LoadingComponent,LoadingService,HttpService} from 'evekit/core'
 @Component({
     template: require("./app.html"),
     components:{LoadingComponent}
@@ -16,9 +16,9 @@ import {LoadingComponent,loadingService} from 'evekit/core'
 class  App extends  Vue {
 
     beforeMount(){
-        loadingService._setLoadingEvent((val)=>{
+        LoadingService._setLoadingEvent((val)=>{
             this.isShowLoading=val;
-            console.log(this.isShowLoading)
+           // console.log(this.isShowLoading)
         })
     }
     isShowLoading:boolean=false;
@@ -31,8 +31,13 @@ class  App extends  Vue {
         img:""
     };
     onLoading(){
-
-        loadingService.show();
+        HttpService.get("http://localhost:3000/sdfsdfsdf.sdfsdfs").then(res=>{
+            console.log("ok")
+        },res=>{
+            console.log("rej")
+        }).catch(erro=>{
+            console.log("erro")
+        })
     }
     onSearch(){
         console.log(arguments);

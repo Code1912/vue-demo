@@ -68,7 +68,7 @@ let config= {
         jQuery: 'jquery',
         toastr:'toastr',
         'vue-property-decorator':"VuePropertyDecorator",
-        'vue-class-component':'VueClassComponent'
+        'vue-class-component':'VueClassComponent',
     }, function (context, request, callback) {
         //console.log(request)
         if (/^vue$/.test(request)) {
@@ -79,6 +79,9 @@ let config= {
         }
         if (/^iview$/.test(request)) {
             return callback(null, `var Object.assign({default:iview},iview)`);
+        }
+        if (/^axios/.test(request)) {
+            return callback(null, `var Object.assign({default:axios},axios)`);
         }
         if (/^evekit\//.test(request)) {
 

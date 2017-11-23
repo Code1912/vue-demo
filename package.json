@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "dev": "webpack-dev-server --inline  --progress --port 8888",
+    "dev": "gulp4",
     "core":"gulp4 --gulpfile ./build/task.core.js --env prd core:build"
   },
   "author": "code1912",

@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 const eventName: string = `core.loading`;
 
-export class LoadingService extends Vue {
+export class Loading  extends Vue {
     _setLoadingEvent(func: (isShow: boolean) => void): void {
         this.$on(eventName, (isShow: boolean) => {
             func(isShow)
@@ -18,5 +18,5 @@ export class LoadingService extends Vue {
     }
 }
 
-export const loadingService = new LoadingService();
+export const LoadingService = new Loading();
 
