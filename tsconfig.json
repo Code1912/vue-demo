@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration":false,
-    "typeRoots" : ["./typings/globals","./node_modules/@types"],
+    "typeRoots" : ["./typings","./node_modules/@types"],
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -11,12 +11,11 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": ".",
     "lib": ["es2015", "dom"]
   },
   "exclude": [
     "node_modules",
-    "node_modules/@types/evekit",
+    "node_modules/@types",
     "build",
     "dist",
     "serve"

@@ -69,7 +69,7 @@ let webpackCompile = function webpackCompile(config, done) {
             aggregateTimeout: 300,
             ignored: [/node_modules/, /dist/]
         }, function (err, stats) {
-            handleError(err, stats)
+            handleError(err, stats);
             if (config.entry["evekit-core"]) {
                 dts("evekit-core")
             }
@@ -94,6 +94,7 @@ function dts(module) {
         dest = helpers.root(`node_modules/@types/evekit/core`);
     }
   //  del.sync([dest]);
+   // console.log(ts.createProject( helpers.root('tsconfig.json')));
     let tsProject = ts.createProject( helpers.root('tsconfig.json'), {
         outDir: dest,
         declaration: true,

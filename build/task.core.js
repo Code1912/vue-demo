@@ -11,6 +11,7 @@ gulp.task("core:dts", function () {
     return taskUtil.dts("evekit-core")
         .pipe(through.obj(function (chunk, enc, cb) {
             fs.writeFileSync( helpers.root("node_modules/@types/evekit/core/index.d.ts") ,"export * from './app'","utf-8");
+            fs.writeFileSync( helpers.root("node_modules/@types/evekit/index.d.ts") ,"export  class evekit{ }","utf-8");
             cb(null, chunk)
         }));
 });
@@ -27,9 +28,9 @@ gulp.task("core:ts", (done) => {
     taskUtil.webpackCompile(config, done);
 });
 gulp.task("core:build",done=>{
-    return gulp.series(gulp.parallel(['core:dts','core:ts']))(done);
+    return gulp.series('core:dts','core:ts')(done);
 });
 
 module.exports=function () {
-    return gulp.series(gulp.parallel(['core:dts','core:ts']));
+    return gulp.series('core:dts','core:ts');
 };
