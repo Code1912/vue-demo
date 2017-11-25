@@ -9,10 +9,11 @@ import {router} from "./app.routing";
 import './app.css';
 import {Error500Component} from "./pages/error500.component";
 import {LoadingComponent, LoadingService, HttpService, AlertService} from 'evekit/core'
+import {MenuComponent} from "./components/menu.component";
 
 @Component({
     template: require("./app.html"),
-    components: {LoadingComponent}
+    components: {LoadingComponent,MenuComponent}
 })
 class App extends Vue {
     beforeMount() {
@@ -22,6 +23,17 @@ class App extends Vue {
         })
     }
 
+    menus= [{
+        name: "Dashboard", path: '/'
+    }, {
+        name: "404", path: '/404'
+    }, {
+        name: "500", path: '/500'
+    },{
+        name:"demo",path:"",children:[{
+            name:"demo",path:"/demo/test1"
+        }]
+    }];
     isShowLoading: boolean = false;
     name: string;
     searchText: string = "";
@@ -35,7 +47,11 @@ class App extends Vue {
     onLoading() {
 
         AlertService.confirm("hahaha", () => {
-            console.log(this.userInfo)
+            AlertService.confirm("fffffffffff", () => {
+                console.log(this.userInfo)
+            }, () => {
+
+            });
         }, () => {
 
         });
@@ -52,10 +68,7 @@ class App extends Vue {
     onSearch() {
         console.log(arguments);
         console.log(router);
-        router.addRoutes([{
-            path: "/500",
-            component: Error500Component
-        }])
+
 
     }
 

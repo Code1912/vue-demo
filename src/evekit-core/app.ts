@@ -1,3 +1,4 @@
 import './app.css'
-export * from "./components/ui-elements/index";
-export  * from './service/index'
+export * from "./components/ui-elements";
+export * from './service'
+export * from './common'
