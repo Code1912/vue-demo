@@ -8,6 +8,6 @@ import {Page1Component} from "./pages/page1.component";
       component:Page1Component
   }]
 })
-export class App extends  Vue{
+export class App  {
 
 }
