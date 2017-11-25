@@ -2,9 +2,9 @@ import Axios,{AxiosRequestConfig,AxiosPromise} from 'axios';
 import {LoadingService} from "./loading.service";
 import {AlertService} from "./alert.service";
 
-export class Http {
-    private _count: number = 0;
-    private  _getRequestOption(options ?: EveRequestOptions): EveRequestOptions {
+export  class HttpService {
+    private static _count: number = 0;
+    private static  _getRequestOption(options ?: EveRequestOptions): EveRequestOptions {
         if (!options  ) {
             options={
                 hideLoading:false
@@ -20,7 +20,7 @@ export class Http {
         return options;
     }
 
-    private _hideLoading(options:EveRequestOptions) {
+    private static _hideLoading(options:EveRequestOptions) {
         if (!(options && options.hideLoading)) {
             this._count--;
         }
@@ -30,14 +30,14 @@ export class Http {
         }
     }
 
-    private _showLoading( options?: EveRequestOptions) {
+    private static _showLoading( options?: EveRequestOptions) {
         if ((options && options.hideLoading)) {
             return;
         }
         this._count++;
         LoadingService.show();
     }
-    private _intercept(req: AxiosPromise<any>, options?: EveRequestOptions):Promise<any> {
+    private static _intercept(req: AxiosPromise<any>, options?: EveRequestOptions):Promise<any> {
         let that = this;
 
         this._showLoading(options);
@@ -55,21 +55,20 @@ export class Http {
         });
 
     }
-    get(url:string,options?:EveRequestOptions ):Promise<any> {
+    static get(url:string,options?:EveRequestOptions ):Promise<any> {
        return  this._intercept(Axios.get(url,this._getRequestOption(options)));
     }
-    post(url:string,options?:EveRequestOptions ,data?:any):Promise<any>  {
+    static post(url:string,options?:EveRequestOptions ,data?:any):Promise<any>  {
         return  this._intercept(Axios.post(url,data,this._getRequestOption(options)));
     }
-    put(url:string,options?:EveRequestOptions ,data?:any) :Promise<any> {
+    static put(url:string,options?:EveRequestOptions ,data?:any) :Promise<any> {
         return  this._intercept(Axios.put(url,data,this._getRequestOption(options)));
     }
 
-    delete(url:string,options?:EveRequestOptions ):Promise<any>  {
+    static delete(url:string,options?:EveRequestOptions ):Promise<any>  {
         return  this._intercept(Axios.delete(url,this._getRequestOption(options)));
     }
 }
 export interface EveRequestOptions extends  AxiosRequestConfig{
     hideLoading:boolean;
 }
-export const HttpService: Http = new Http();

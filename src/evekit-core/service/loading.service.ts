@@ -2,21 +2,23 @@ import Vue from 'vue'
 
 const eventName: string = `core.loading`;
 
-export class Loading  extends Vue {
-    _setLoadingEvent(func: (isShow: boolean) => void): void {
-        this.$on(eventName, (isShow: boolean) => {
+export class LoadingService {
+    private static _eventBus = new Vue();
+
+    static _setLoadingEvent(func: (isShow: boolean) => void): void {
+        this._eventBus.$on(eventName, (isShow: boolean) => {
             func(isShow)
         });
     }
 
-    show() {
-        this.$emit(eventName, true)
+    static show() {
+        this._eventBus.$emit(eventName, true)
     }
 
-    hide() {
-        this.$emit(eventName, false)
+    static hide() {
+        this._eventBus.$emit(eventName, false)
     }
 }
 
-export const LoadingService = new Loading();
+
 
