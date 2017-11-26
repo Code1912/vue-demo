@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "dev": "gulp4",
-    "core":"gulp4 --gulpfile ./build/task.core.js --env prd core:build"
+    "core": "gulp4 --gulpfile ./build/task.core.js --env prd core:build"
   },
   "author": "code1912",
   "license": "MIT",

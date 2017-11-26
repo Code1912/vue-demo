@@ -1,0 +1,16 @@
+<div class="nav-tabs-custom">
+    <ul :class="header?'nav nav-tabs pull-right':'nav nav-tabs'">
+        <li @click="onTabTitleClick(index)"  :key="index" v-for="(tab,index) of tabItems" :class=" tab.active?'active':''">
+            <a href="javascript:void(0)" data-toggle="tab" aria-expanded="false"  >
+                <span  >{{tab.header}} </span>
+                <i v-if="tab.icon" :class="'fa fa-'+tab.icon "></i>
+            </a>
+        </li>
+        <li v-if="header" class="pull-left header">
+            {{header}}
+        </li>
+    </ul>
+    <div class="tab-content">
+       <slot></slot>
+    </div>
+</div>

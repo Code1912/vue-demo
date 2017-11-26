@@ -1,6 +1,41 @@
-
 <div>
 
-    Test1
-    <button @click="onHttpLoading">Test Http Loading</button>
+    <h2>Demo Page</h2>
+    <eve-tab header="Http" v-model:select-index='tabSelectIndex'>
+        <eve-tab-item header="Demo">
+            <div>
+                <button @click="onHttpGet" class="btn btn-primary ">Test Http Get</button>
+            </div>
+        </eve-tab-item>
+
+        <eve-tab-item header="Code">
+
+            <textarea    rows="20" style="width: 100%">
+                {{code.http}}
+            </textarea>
+        </eve-tab-item>
+
+
+    </eve-tab>
+    <eve-tab header="Modal"  >
+        <eve-tab-item header="Demo">
+            <div>
+                <button @click="onModal" class="btn btn-primary ">OpenModal</button>
+                    <eve-modal v-model:shown="isShown" header="test">
+                         <div >fffffffffffffff</div>
+                    </eve-modal>
+            </div>
+        </eve-tab-item>
+
+        <eve-tab-item header="Code">
+            <textarea    rows="20" style="width: 100%">
+                {{code.modal}}
+            </textarea>
+        </eve-tab-item>
+
+
+    </eve-tab>
+
+
+
 </div>

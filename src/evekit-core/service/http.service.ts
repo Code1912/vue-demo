@@ -60,10 +60,10 @@ export  class HttpService {
         options.params = parmas;
         return this._intercept(Axios.get(url, options));
     }
-    static post(url:string,options?:EveRequestOptions ,data?:any):Promise<any>  {
+    static post(url:string ,data?:any,options?:EveRequestOptions):Promise<any>  {
         return  this._intercept(Axios.post(url,data,this._getRequestOption(options)));
     }
-    static put(url:string,options?:EveRequestOptions ,data?:any) :Promise<any> {
+    static put(url:string,data?:any,options?:EveRequestOptions ) :Promise<any> {
         return  this._intercept(Axios.put(url,data,this._getRequestOption(options)));
     }
 

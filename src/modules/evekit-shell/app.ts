@@ -2,7 +2,6 @@ import Vue from 'vue'
 import iView from "iview";
 import VueRouter from 'vue-router'
 import Component from 'vue-class-component'
-import './common/es6.extend'
 import {router} from "./app.routing";
 import './app.css';
 import { LoadingService,  AlertService} from 'evekit/core'

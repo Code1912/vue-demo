@@ -7,6 +7,6 @@
     </router-link>
 
     <ul  v-if="data.children&&data.children.length>0" class="treeview-menu">
-         <menu-component  :id=" data.name+'child'+index" :data="item" v-for="(item,index) of data.children" ></menu-component>
+         <menu-component :key="index"  :id=" data.name+'child'+index" :data="item" v-for="(item,index) of data.children" ></menu-component>
     </ul>
 </li>

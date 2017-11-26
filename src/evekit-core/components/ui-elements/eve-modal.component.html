@@ -1,0 +1,17 @@
+<div  ref="modal"
+     class="modal fade  "
+     data-backdrop="false"
+     data-show="true"    >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class=" modal-header ">
+                <button type="button" class="close" @click="onClose()"  aria-label="Close"><span aria-hidden="true"><i
+                        class="fa fa-times"></i></span></button>
+                <h4 class="modal-title"><span >{{header}}</span></h4>
+            </div>
+            <div class="modal-body  slimScrollDiv">
+                  <slot></slot>
+            </div>
+        </div>
+    </div>
+</div>

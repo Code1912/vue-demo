@@ -1,6 +1,4 @@
-import {Modal} from 'iview'
-
-declare const toastr: {
+ declare const toastr: {
     options: any;
     error: (msg) => void;
     warning: (msg) => void;
@@ -10,7 +8,6 @@ declare const toastr: {
     clear: (...args) => void;
     remove: (...args) => void;
 };
-declare const $: any;
 const defaultOptions = {
     "closeButton": true,
     "debug": false,

@@ -1,12 +1,5 @@
-
-declare module '*.css' {
-    const content: any;
-    export default content;
-}
-
-interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64{
-    jQuery: any;
-    [key: string]: any;
-}
-declare  const  window:Window;
-declare  const $:any;
+/// <reference path="./adminLTE/index.d.ts" />
+/// <reference path="./echarts/index.d.ts" />
+/// <reference path="./bootstrap/index.d.ts" />
+/// <reference path="./evekit/index.d.ts" />
+/// <reference path="./es6/index.d.ts" />
