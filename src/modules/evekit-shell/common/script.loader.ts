@@ -1,12 +1,9 @@
 
 export  class  ScriptLoader  {
-    load(url: string): Promise<boolean> {
-        return ScriptLoader.load(url);
-    }
 
     static load(url: string): Promise<boolean> {
         let promise = new Promise<boolean>(function(resolve, reject) {
-            if($(`#${url.split(".")[0]}JS`.replace(/\//g,"")).length>0){
+            if($(`#${url.split("/")[0]}JS`.replace(/\//g,"")).length>0){
                 resolve(true);
                 return;
             }

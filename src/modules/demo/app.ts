@@ -1,4 +1,13 @@
 import Vue from 'vue'
-export class App extends  Vue{
+import { EveModule} from 'evekit/core'
+import Component from 'vue-class-component'
+import {Page1Component} from "./pages/page1.component";
+@EveModule({
+  routes:[{
+      path:'/demo/test1',
+      component:Page1Component
+  }]
+})
+export class App  {
 
 }

@@ -1,11 +1,8 @@
 export  class  StyleLoader  {
-    load(url: string): Promise<boolean> {
-        return StyleLoader.load(url);
-    }
 
     static load(url: string): Promise<boolean> {
         let promise = new Promise<boolean>(function(resolve, reject) {
-            if($(`#${url.split(".")[0]}Style`.replace(/\//g,"")).length>0){
+            if($(`#${url.split("/")[0]}Style`.replace(/\//g,"")).length>0){
                 resolve(true);
                 return;
             }
@@ -17,7 +14,7 @@ export  class  StyleLoader  {
                 resolve(true)
             };
             linkElement.addEventListener("error",  (ev: ErrorEvent) => {
-                reject(false)
+                resolve(false)
             }, true);
             document.head.appendChild(linkElement);
         });

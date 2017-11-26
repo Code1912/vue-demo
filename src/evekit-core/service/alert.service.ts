@@ -55,7 +55,6 @@ export  class AlertService {
         toastr.options = {
             "closeButton": false,
             "debug": false,
-            "newestOnTop": true,
             "progressBar": false,
             "positionClass": "toast-top-center",
             "onclick": null,
@@ -83,15 +82,14 @@ export  class AlertService {
                 onShown: function () {
                     let that = this;
                     $(this).find("button")[0].onclick = () => {
-                        (cancelFunc || Function.prototype)();
-                        (okFunc || Function.prototype)();
-                        toastr.remove(that)
+                        toastr.remove(that);
                         $('#defaultMask').hide();
+                        (cancelFunc || Function.prototype)();
                     };
                     $(this).find("button")[1].onclick = () => {
-                        (okFunc || Function.prototype)();
-                        toastr.remove(that)
+                        toastr.remove(that);
                         $('#defaultMask').hide();
+                        (okFunc || Function.prototype)();
                     }
                 },
                 onHidden: function () {

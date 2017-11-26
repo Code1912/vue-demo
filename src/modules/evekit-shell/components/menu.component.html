@@ -1,0 +1,12 @@
+<li  :class="data.children&&data.children.length>0?'treeview':''"  >
+    <router-link :to="data.path">
+        <i class="fa fa-dashboard"></i> <span>{{data.name}}</span>
+        <span  v-if="data.children&&data.children.length>0"  class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+    </router-link>
+
+    <ul  v-if="data.children&&data.children.length>0" class="treeview-menu">
+         <menu-component  :id=" data.name+'child'+index" :data="item" v-for="(item,index) of data.children" ></menu-component>
+    </ul>
+</li>
