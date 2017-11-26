@@ -11,6 +11,8 @@ export   class MenuComponent  extends Vue {
     @Prop()
     data: MenuItem;
 
+
+
 }
 export  class  MenuItem{
     path:string;

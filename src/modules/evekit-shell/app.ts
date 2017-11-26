@@ -1,28 +1,27 @@
 import Vue from 'vue'
 import iView from "iview";
-import {ContainerComponent} from "./components/index";
 import VueRouter from 'vue-router'
-import DashboardComponent from "./pages/dashboard.component";
 import Component from 'vue-class-component'
 import './common/es6.extend'
 import {router} from "./app.routing";
 import './app.css';
-import {Error500Component} from "./pages/error500.component";
-import {LoadingComponent, LoadingService, HttpService, AlertService} from 'evekit/core'
+import { LoadingService,  AlertService} from 'evekit/core'
 import {MenuComponent} from "./components/menu.component";
-
+import {EvekitCore} from 'evekit/core'
 @Component({
     template: require("./app.html"),
-    components: {LoadingComponent,MenuComponent}
+    components: { MenuComponent}
 })
 class App extends Vue {
     beforeMount() {
         LoadingService._setLoadingEvent((val) => {
             this.isShowLoading = val;
             // console.log(this.isShowLoading)
-        })
+        });
+        this.bindMenuList=Object.assign([],this.menus);
     }
 
+    bindMenuList=[];
     menus= [{
         name: "Dashboard", path: '/'
     }, {
@@ -31,7 +30,7 @@ class App extends Vue {
         name: "500", path: '/500'
     },{
         name:"demo",path:"",children:[{
-            name:"demo",path:"/demo/test1"
+            name:"test1",path:"/demo/test1"
         }]
     }];
     isShowLoading: boolean = false;
@@ -66,10 +65,13 @@ class App extends Vue {
     }
 
     onSearch() {
-        console.log(arguments);
-        console.log(router);
 
-
+        let text=(this.searchText||'').trim()
+        if(!text){
+            this.bindMenuList=Object.assign([],this.menus);
+            return;
+        }
+        this.bindMenuList=this.menus.filter(p=>p.name.includes(text)) ;
     }
 
     onLogout() {
@@ -79,6 +81,7 @@ class App extends Vue {
 
 Vue.use(iView);
 Vue.use(VueRouter);
+Vue.use(EvekitCore);
 
 new App({
     el: "#app",
