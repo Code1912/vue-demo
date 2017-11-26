@@ -55,8 +55,10 @@ export  class HttpService {
         });
 
     }
-    static get(url:string,options?:EveRequestOptions ):Promise<any> {
-       return  this._intercept(Axios.get(url,this._getRequestOption(options)));
+    static get(url:string,parmas?:any,options? :EveRequestOptions ):Promise<any> {
+        options = this._getRequestOption(options);
+        options.params = parmas;
+        return this._intercept(Axios.get(url, options));
     }
     static post(url:string,options?:EveRequestOptions ,data?:any):Promise<any>  {
         return  this._intercept(Axios.post(url,data,this._getRequestOption(options)));
