@@ -24,29 +24,30 @@ const defaultOptions = {
     "hideMethod": "fadeOut"
 };
 const defaultTimeOut: number = 5000;
-
+ import {Injectable} from "../common/injectable";
+ @Injectable()
 export  class AlertService {
-    static error(msg: string, showSeconds?: number) {
+     error(msg: string, showSeconds?: number) {
         this._setOptions(showSeconds);
         toastr.error(msg)
     }
 
-    static  warning(msg: string, showSeconds?: number) {
+      warning(msg: string, showSeconds?: number) {
         this._setOptions(showSeconds);
         toastr.warning(msg)
     }
 
-    static info(msg: string, showSeconds?: number) {
+     info(msg: string, showSeconds?: number) {
         this._setOptions(showSeconds);
         toastr.info(msg)
     }
 
-    static  success(msg: string, showSeconds?: number) {
+      success(msg: string, showSeconds?: number) {
         this._setOptions(showSeconds);
         toastr.success(msg)
     }
 
-     static confirm(msg: string, okFunc?: Function, cancelFunc?: Function) {
+      confirm(msg: string, okFunc?: Function, cancelFunc?: Function) {
         $('#defaultMask').show();
         toastr.clear();
         toastr.options = {
@@ -95,7 +96,7 @@ export  class AlertService {
             });
     }
 
-    private static _setOptions(showSeconds?: number) {
+    private  _setOptions(showSeconds?: number) {
         toastr.options = Object.assign({}, defaultOptions, {timeOut: showSeconds || defaultTimeOut})
     }
 

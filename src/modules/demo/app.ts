@@ -1,6 +1,4 @@
-import Vue from 'vue'
-import { EveModule} from 'evekit/core'
-import Component from 'vue-class-component'
+ import { EveModule} from 'evekit/core'
 import {Page1Component} from "./pages/page1.component";
 import './app.css'
 @EveModule({

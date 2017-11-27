@@ -9,28 +9,28 @@ export  class EveTabComponent extends Vue {
     private  tabItems:EveTabItemComponent[]=[];
     @Prop()
     header:string;
-    @Model("selectIndexChange",{
+    @Model("selectedIndexChange",{
         type:Number,
         default:0
     })
-    selectIndex:number ;
-    @Watch("selectIndex")
+    selectedIndex:number ;
+    @Watch("selectedIndex")
     onSelectIndexChanged(newVal:number,oldVal:number){
 
         this.selectTab(newVal);
     }
     addTab(tab: EveTabItemComponent) {
         this.tabItems.push(tab);
-        this.selectTab(this.selectIndex);
+        this.selectTab(this.selectedIndex);
     }
 
     removeTab(tab: EveTabItemComponent) {
         this.tabItems.removeItem(tab);
-        this.selectTab(this.selectIndex);
+        this.selectTab(this.selectedIndex);
     }
 
     onTabTitleClick(index:number){
-        this.$emit("selectIndexChange",index);
+        this.$emit("selectedIndexChange",index);
         this.selectTab(index);
     }
     selectTab(index:number) {

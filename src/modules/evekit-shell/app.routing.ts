@@ -25,9 +25,9 @@ function  createRouteConfig(path):RouteConfig{
 }
 export  const router = new VueRouter({ mode: 'history',routes});
 router.beforeEach((to,from,next)=>{
-    LoadingService.show();
+    LoadingService.instance<LoadingService>().show();
     next();
 });
 router.afterEach((to,from)=>{
-        LoadingService.hide();
+        LoadingService.instance<LoadingService>().hide();
 })

@@ -1,14 +1,16 @@
 export const code = {
     http: `   
     import Vue from 'vue'
-    import {HttpService, ViewChild} from "evekit/core";
+    import {HttpService, ViewChild,Service} from "evekit/core";
     import Component from 'vue-class-component'
     @Component({
-        template: require('./page1.component.html')
+        template: \`<button @click='onClick' class='btn btn-primary'>Http Test</button>  \`
     })
     export class Page1Component extends Vue {
-        onHttpGet(){
-            HttpService.get('http://www.google.com').then(res => {
+        @Service(HttpService)
+        httpService:HttpService
+        onClick(){
+            this.httpService.get('http://www.google.com').then(res => {
                 console.log(res)
             }).catch(error => {
                 console.log(error)
@@ -17,8 +19,7 @@ export const code = {
     } 
     `,
     modal:`    
-    import Vue from 'vue'
-    import {HttpService, ViewChild} from "evekit/core";
+    import Vue from 'vue' 
     import Component from 'vue-class-component'
     @Component({
         template:\`  <div> <button @click='onOpen' class='btn btn-primary'>OpenModal</button>  
@@ -40,21 +41,20 @@ export const code = {
     import {HttpService, ViewChild} from "evekit/core";
     import Component from 'vue-class-component'
     @Component({
-        template:\` <eve-tab header="EveTab" v-model:select-index="selectIndex" v-on:selectIndexChange="selectIndexChange($event)">
-        <eve-tab-item header="Tab1">
-             111111
-        </eve-tab-item>
-
-        <eve-tab-item header="Tab2">
-             22222222
-        </eve-tab-item> 
-    </eve-tab>\`
+        template:\` <eve-tab header="EveTab" vv-model:selected-index='selectedIndex'  v-on:selectedIndexChange="onTabSelectedChange($event)" >
+                        <eve-tab-item header="Tab1">
+                             111111
+                        </eve-tab-item>
+                
+                        <eve-tab-item header="Tab2">
+                             22222222
+                        </eve-tab-item> 
+                    </eve-tab>\`
     })
-    export class Page1Component extends Vue {
-        isShown=false;
-        selectIndex=0;
-        selectIndexChange(val){
+    export class Page1Component extends Vue { 
+        selectedIndex=0;
+        onTabSelectedChange(val){
              console.log(val)
-        } 
+    } 
     `
 }

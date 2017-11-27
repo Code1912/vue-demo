@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Component from 'vue-class-component'
 import {router} from "./app.routing";
 import './app.css';
-import { LoadingService,  AlertService} from 'evekit/core'
+import {LoadingService, AlertService, Service} from 'evekit/core'
 import {MenuComponent} from "./components/menu.component";
 import {EvekitCore} from 'evekit/core'
 @Component({
@@ -12,8 +12,11 @@ import {EvekitCore} from 'evekit/core'
     components: { MenuComponent}
 })
 class App extends Vue {
+    @Service(LoadingService)
+    loadingService:LoadingService;
+
     beforeMount() {
-        LoadingService._setLoadingEvent((val) => {
+        this.loadingService._setLoadingEvent((val) => {
             this.isShowLoading = val;
             // console.log(this.isShowLoading)
         });
@@ -35,8 +38,7 @@ class App extends Vue {
     isShowLoading: boolean = false;
     name: string;
     searchText: string = "";
-    // 初始数据可以直接声明为实例的属性
-    message: string = 'Hello!';
+
     userInfo = {
         userName: "Test",
         img: ""
@@ -44,23 +46,6 @@ class App extends Vue {
 
     onLoading() {
 
-        AlertService.confirm("hahaha", () => {
-            AlertService.confirm("fffffffffff", () => {
-                console.log(this.userInfo)
-            }, () => {
-
-            });
-        }, () => {
-
-        });
-        //
-        // HttpService.get("http://localhost:3000/sdfsdfsdf.sdfsdfs").then(res=>{
-        //     console.log("ok")
-        // },res=>{
-        //     console.log("rej")
-        // }).catch(erro=>{
-        //     console.log("erro")
-        // })
     }
 
     onSearch() {

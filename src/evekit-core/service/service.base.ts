@@ -1,8 +1,7 @@
-export  class  ServiceBase {
-    private  static _instance:any;
-
-    public static get Instance():any
+import {getService} from '../common/injectable'
+export  class  ServiceBase{
+    public static instance<T>():T
     {
-        return this._instance || (this._instance = new this());
+        return  <T>getService(this)
     }
 }

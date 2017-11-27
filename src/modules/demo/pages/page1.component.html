@@ -7,7 +7,7 @@
 
     </section>
     <section class="content">
-        <eve-tab header="Http" v-model:select-index='tabSelectIndex'>
+        <eve-tab header="Http"  >
             <eve-tab-item header="Demo">
                 <div>
                     <button @click="onHttpGet" class="btn btn-primary ">Test Http Get</button>
@@ -46,10 +46,10 @@
 
         </eve-tab>
 
-        <eve-tab header="EveTab">
-            <eve-tab-item header="Demo">
-                <eve-tab>
-                    <eve-tab-item header="Tab1">
+        <eve-tab header="EveTab"   >
+            <eve-tab-item header="Demo"  >
+                <eve-tab v-model:selected-index='tabSelectedIndex'  v-on:selectedIndexChange="onTabSelectedChange($event)" >
+                    <eve-tab-item header="Tab1" >
                         111111111111
                     </eve-tab-item>
 

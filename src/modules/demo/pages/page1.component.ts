@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {HttpService, ViewChild} from "evekit/core";
+import {EveCookieService, HttpService, ViewChild,Service} from "evekit/core";
 import Component from 'vue-class-component'
 import {code} from "./code"
 declare  const  hljs:any;
@@ -8,16 +8,16 @@ declare  const  hljs:any;
 })
 export class Page1Component extends Vue {
     haha: string = "hahhaha";
-    tabSelectIndex: number = 0;
+    tabSelectedIndex: number = 0;
     isShown = false;
     code = code;
+    @Service(EveCookieService)
+    cookieService:EveCookieService;
 
-    created() {
-
-    }
-
+    @Service(HttpService)
+    httpService:HttpService;
     onHttpGet() {
-        HttpService.get('http://www.google.com').then(res => {
+        this.httpService.get('http://www.google.com').then(res => {
             console.log(res)
         }).catch(error => {
             console.log(error)
@@ -31,12 +31,19 @@ export class Page1Component extends Vue {
     @ViewChild("fuck")
     btn: HTMLButtonElement;
 
+    onTabSelectedChange($event){
+        console.log($event,this.tabSelectedIndex)
+    }
     addScriptWithContent(content) {
         let js = document.createElement('script');
         js.innerHTML  = content;
         document.body.appendChild(js);
     }
+    created(){
+        console.dir(this);
+    }
     mounted() {
+        console.log(this.cookieService);
         console.log(this.btn)
         this.load('http://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js').then(res => {
             return this.load('http://cdn.bootcss.com/highlight.js/9.12.0/languages/typescript.min.js')
