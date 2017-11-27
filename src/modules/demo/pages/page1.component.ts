@@ -31,8 +31,6 @@ export class Page1Component extends Vue {
     @ViewChild("fuck")
     btn: HTMLButtonElement;
 
-
-
     addScriptWithContent(content) {
         let js = document.createElement('script');
         js.innerHTML  = content;
@@ -57,7 +55,7 @@ export class Page1Component extends Vue {
 
     load(url: string): Promise<boolean> {
         let promise = new Promise<boolean>(function (resolve, reject) {
-            if ($(`#${url.split("/")[0]}JS`.replace(/\//g, "")).length > 0) {
+            if ($(`#${url}`.replace(/\//g, "")).length > 0) {
                 resolve(true);
                 return;
             }
