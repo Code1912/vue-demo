@@ -12,17 +12,19 @@ export class Page1Component extends Vue {
 
     isShown = false;
     code = code;
-    @Service(EveCookieService)
+    @Service()
     cookieService:EveCookieService;
 
-    @Service(HttpService)
+    @Service()
     httpService:HttpService;
 
     checkboxValue:boolean=true;
     onCkValueChange($event){
         console.log(this.checkboxValue)
     }
+
     onHttpGet() {
+
         this.httpService.get('http://www.google.com').then(res => {
             console.log(res)
         }).catch(error => {
@@ -46,9 +48,11 @@ export class Page1Component extends Vue {
         document.body.appendChild(js);
     }
     created(){
-        console.dir(this);
+        console.dir(this.cookieService);
+
     }
     mounted() {
+
         console.log(this.cookieService);
         console.log(this.btn)
         this.load('http://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js').then(res => {

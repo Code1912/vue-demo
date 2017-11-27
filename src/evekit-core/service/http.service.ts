@@ -5,10 +5,10 @@ import {Injectable,Service} from "../common/injectable";
 @Injectable()
 export  class HttpService {
     private  _count: number = 0;
-    @Service(LoadingService)
+    @Service()
     loadingService:LoadingService;
 
-    @Service(AlertService)
+    @Service()
     alertService:AlertService;
 
     private   _getRequestOption(options ?: EveRequestOptions): EveRequestOptions {
