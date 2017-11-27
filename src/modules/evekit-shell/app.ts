@@ -14,7 +14,8 @@ import {EvekitCore} from 'evekit/core'
 class App extends Vue {
     @Service(LoadingService)
     loadingService:LoadingService;
-
+    @Service(AlertService)
+    alertService:AlertService;
     beforeMount() {
         this.loadingService._setLoadingEvent((val) => {
             this.isShowLoading = val;
@@ -42,15 +43,10 @@ class App extends Vue {
     userInfo = {
         userName: "Test",
         img: ""
-    };
-
-    onLoading() {
-
-    }
+    } ;
 
     onSearch() {
-
-        let text=(this.searchText||'').trim()
+        let text=(this.searchText||'').trim();
         if(!text){
             this.bindMenuList=Object.assign([],this.menus);
             return;
@@ -59,7 +55,9 @@ class App extends Vue {
     }
 
     onLogout() {
-
+          this.alertService.confirm("确认退出?",()=>{
+             // window.location.href='login'
+          })
     }
 }
 

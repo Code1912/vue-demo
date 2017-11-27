@@ -7,7 +7,7 @@
 
     </section>
     <section class="content">
-        <eve-tab header="Http"  >
+        <eve-tab header="Http">
             <eve-tab-item header="Demo">
                 <div>
                     <button @click="onHttpGet" class="btn btn-primary ">Test Http Get</button>
@@ -42,14 +42,13 @@
                         </code>
                  </pre>
             </eve-tab-item>
-
-
         </eve-tab>
 
-        <eve-tab header="EveTab"   >
-            <eve-tab-item header="Demo"  >
-                <eve-tab v-model:selected-index='tabSelectedIndex'  v-on:selectedIndexChange="onTabSelectedChange($event)" >
-                    <eve-tab-item header="Tab1" >
+        <eve-tab header="EveTab">
+            <eve-tab-item header="Demo">
+                <eve-tab v-model:selected-index='tabSelectedIndex'
+                         v-on:selectedIndexChange="onTabSelectedChange($event)">
+                    <eve-tab-item header="Tab1" icon="eye">
                         111111111111
                     </eve-tab-item>
 
@@ -67,7 +66,58 @@
                  </pre>
             </eve-tab-item>
         </eve-tab>
-        <button ref="fuck">Test</button>
+
+        <eve-tab header="EveCheckbox">
+            <eve-tab-item header="Demo">
+                <div>
+
+                    <eve-checkbox v-model:value="checkboxValue" name="ck" v-on:valueChange="onCkValueChange">
+                        fffffffffffffff
+                    </eve-checkbox>
+                </div>
+            </eve-tab-item>
+
+            <eve-tab-item header="Code">
+                <pre>
+                        <code class="lang-typescript">
+                            {{code.eveCheckbox}}
+                        </code>
+                 </pre>
+            </eve-tab-item>
+            <eve-tab-item header="Properties">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th style="width: 10px">Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>usage</th>
+                    </tr>
+                    <tr>
+                        <td  >value</td>
+                        <td>v-model </td>
+                        <td>chcekbox绑定值 </td>
+                        <td>v-model:value="xxxx" </td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>v-bind </td>
+                        <td>控件名字 </td>
+                        <td> :name='xxxx'  or  name:'string' </td>
+                    </tr>
+                    <tr>
+                        <td>valueChange</td>
+                        <td>v-on </td>
+                        <td>value改变后触发事件 </td>
+                        <td>   v-on:valueChange="onCkValueChange" </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </eve-tab-item>
+        </eve-tab>
+
         <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs.min.css" rel="stylesheet">-->
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atelier-plateau-dark.min.css" rel="stylesheet">-->

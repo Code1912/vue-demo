@@ -42,7 +42,7 @@ export const code = {
     import Component from 'vue-class-component'
     @Component({
         template:\` <eve-tab header="EveTab" vv-model:selected-index='selectedIndex'  v-on:selectedIndexChange="onTabSelectedChange($event)" >
-                        <eve-tab-item header="Tab1">
+                        <eve-tab-item header="Tab1" :icon="'eye' " >
                              111111
                         </eve-tab-item>
                 
@@ -55,6 +55,23 @@ export const code = {
         selectedIndex=0;
         onTabSelectedChange(val){
              console.log(val)
+    } 
+    `,
+    eveCheckbox:`
+         
+    import Vue from 'vue'
+    import {HttpService, ViewChild} from "evekit/core";
+    import Component from 'vue-class-component'
+    @Component({
+        template:\`  <eve-checkbox v-model:value="checkboxValue" name="ck"  v-on:valueChange="onCkValueChange($event)"  >
+                         fffffffffffffff
+                    </eve-checkbox>\`
+    })
+    export class Page1Component extends Vue { 
+        checkboxValue:boolean=true;
+        onCkValueChange($event){
+            console.log(this.checkboxValue)
+        }
     } 
     `
 }

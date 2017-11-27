@@ -48,7 +48,7 @@ export  class AlertService {
     }
 
       confirm(msg: string, okFunc?: Function, cancelFunc?: Function) {
-        $('#defaultMask').show();
+        $('#defaultMask').fadeIn();
         toastr.clear();
         toastr.options = {
             "closeButton": false,

@@ -1,0 +1,9 @@
+<div class="eve-checkbox">
+    <input :disabled="disabled" :id="name" type="checkbox"   v-model="bindValue" :name="name"/>
+    <label :for="name">
+               <span>
+                    {{text}}
+               </span>
+        <slot></slot>
+    </label>
+</div>

@@ -1,10 +1,10 @@
 import './app.css'
-export * from "./components/ui-elements";
+export * from "./components";
 export * from './service'
 export * from './common'
 import "./common/es6.extend"
 import Vue,{PluginFunction} from 'vue'
-import {ALL_COMPONENTS} from "./components/ui-elements";
+import {ALL_COMPONENTS} from "./components";
 import  './directive/highlight.directive'
 export  class EvekitCore{
     constructor(options?:any){

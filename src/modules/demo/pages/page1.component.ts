@@ -9,6 +9,7 @@ declare  const  hljs:any;
 export class Page1Component extends Vue {
     haha: string = "hahhaha";
     tabSelectedIndex: number = 0;
+
     isShown = false;
     code = code;
     @Service(EveCookieService)
@@ -16,6 +17,11 @@ export class Page1Component extends Vue {
 
     @Service(HttpService)
     httpService:HttpService;
+
+    checkboxValue:boolean=true;
+    onCkValueChange($event){
+        console.log(this.checkboxValue)
+    }
     onHttpGet() {
         this.httpService.get('http://www.google.com').then(res => {
             console.log(res)
