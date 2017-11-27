@@ -12,9 +12,9 @@ import {EvekitCore} from 'evekit/core'
     components: { MenuComponent}
 })
 class App extends Vue {
-    @Service(LoadingService)
+    @Service()
     loadingService:LoadingService;
-    @Service(AlertService)
+    @Service()
     alertService:AlertService;
     beforeMount() {
         this.loadingService._setLoadingEvent((val) => {
