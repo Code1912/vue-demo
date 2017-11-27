@@ -1,41 +1,76 @@
 <div>
 
-    <h2>Demo Page</h2>
-    <eve-tab header="Http" v-model:select-index='tabSelectIndex'>
-        <eve-tab-item header="Demo">
-            <div>
-                <button @click="onHttpGet" class="btn btn-primary ">Test Http Get</button>
-            </div>
-        </eve-tab-item>
+    <section class="content-header">
+        <h1>
+            Demo Page
+        </h1>
 
-        <eve-tab-item header="Code">
+    </section>
+    <section class="content">
+        <eve-tab header="Http" v-model:select-index='tabSelectIndex'>
+            <eve-tab-item header="Demo">
+                <div>
+                    <button @click="onHttpGet" class="btn btn-primary ">Test Http Get</button>
+                </div>
+            </eve-tab-item>
 
-            <textarea    rows="20" style="width: 100%">
-                {{code.http}}
-            </textarea>
-        </eve-tab-item>
+            <eve-tab-item header="Code">
+                 <pre>
+                        <code class="lang-typescript">
+
+                        {{code.http}}
+                        </code>
+                 </pre>
+            </eve-tab-item>
 
 
-    </eve-tab>
-    <eve-tab header="Modal"  >
-        <eve-tab-item header="Demo">
-            <div>
-                <button @click="onModal" class="btn btn-primary ">OpenModal</button>
+        </eve-tab>
+        <eve-tab header="EveModal">
+            <eve-tab-item header="Demo">
+                <div>
+                    <button @click="onModal" class="btn btn-primary ">OpenModal</button>
                     <eve-modal v-model:shown="isShown" header="test">
-                         <div >fffffffffffffff</div>
+                        <div>fffffffffffffff</div>
                     </eve-modal>
-            </div>
-        </eve-tab-item>
+                </div>
+            </eve-tab-item>
 
-        <eve-tab-item header="Code">
-            <textarea    rows="20" style="width: 100%">
+            <eve-tab-item header="Code">
+                <pre>
+                        <code class="lang-typescript">
                 {{code.modal}}
-            </textarea>
-        </eve-tab-item>
+                        </code>
+                 </pre>
+            </eve-tab-item>
 
 
-    </eve-tab>
+        </eve-tab>
 
+        <eve-tab header="EveTab">
+            <eve-tab-item header="Demo">
+                <eve-tab>
+                    <eve-tab-item header="Tab1">
+                        111111111111
+                    </eve-tab-item>
 
+                    <eve-tab-item header="Tab2">
+                        222222222222222222222
+                    </eve-tab-item>
+                </eve-tab>
+            </eve-tab-item>
 
+            <eve-tab-item header="Code">
+                <pre>
+                        <code class="lang-typescript">
+                {{code.tab}}
+                        </code>
+                 </pre>
+            </eve-tab-item>
+        </eve-tab>
+        <button ref="fuck">Test</button>
+        <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
+        <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs.min.css" rel="stylesheet">-->
+        <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atelier-plateau-dark.min.css" rel="stylesheet">-->
+        <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+    </section>
 </div>

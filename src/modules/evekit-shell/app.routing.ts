@@ -8,6 +8,7 @@ const routes=[
     { path: '/', component: DashboardComponent },
     { path: '/404', component: Error404Component  },
     { path: '/500', component: Error500Component  },
+    { path: '*', component: Error404Component  },
     createRouteConfig('/demo/test1')
 ];
 function  createRouteConfig(path):RouteConfig{
