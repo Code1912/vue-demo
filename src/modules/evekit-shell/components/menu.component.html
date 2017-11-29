@@ -1,4 +1,4 @@
-<li  :class="data.children&&data.children.length>0?'treeview':''"  >
+<li  :class="className"  @click="onClick" >
     <router-link :to="data.path">
         <i class="fa fa-dashboard"></i> <span>{{data.name}}</span>
         <span  v-if="data.children&&data.children.length>0"  class="pull-right-container">

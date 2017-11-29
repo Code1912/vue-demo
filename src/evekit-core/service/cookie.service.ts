@@ -1,6 +1,7 @@
 import {Injectable} from "../common/injectable";
+import {ServiceBase} from "./service.base";
 @Injectable()
-export  class  EveCookieService{
+export  class  EveCookieService  extends  ServiceBase{
     public  getCookie(name: string): string  {
         if (this.check(name)) {
             name = encodeURIComponent(name);
