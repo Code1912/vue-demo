@@ -7,7 +7,7 @@ export const code = {
         template: \`<button @click='onClick' class='btn btn-primary'>Http Test</button>  \`
     })
     export class Page1Component extends Vue {
-        @Service(HttpService)
+        @Service()
         httpService:HttpService
         onClick(){
             this.httpService.get('http://www.google.com').then(res => {

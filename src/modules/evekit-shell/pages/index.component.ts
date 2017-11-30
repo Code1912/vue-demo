@@ -2,8 +2,8 @@ import Vue from 'vue'
 import iView from "iview";
 import VueRouter from 'vue-router'
 import Component from 'vue-class-component'
-import {LoadingService, AlertService, Service, EveCookieService, EveAuthService} from 'evekit/core'
-import {MenuComponent} from "../components/menu.component";
+import {LoadingService, AlertService, Service, EveCookieService, EveAuthService, EveEventService} from 'evekit/core'
+import {MenuComponent, MenuItem, MenuItemClickEventName} from "../components/menu.component";
 @Component({
     template: require("./index.component.html"),
     components: { MenuComponent}
@@ -18,16 +18,22 @@ export  class IndexComponent extends Vue {
 
     @Service()
     authService:EveAuthService;
+
+    @Service()
+    eventService: EveEventService;
+
     bindMenuList=[];
     menus= [{
-        name: "Dashboard", path: '/',active:true
+        name: "Dashboard", path: '/',active:false,children:[]
     }, {
-        name: "404", path: '/404',active:false
+        name: "404", path: '/404',active:false,children:[]
     }, {
-        name: "500", path: '/500',active:false
+        name: "500", path: '/500',active:false,children:[]
     },{
-        name:"demo",path:"",children:[{
-            name:"test1",path:"/demo/test1",active:false
+        name:"demo",path:"", active:false,children:[{
+            name:"test1",path:"/demo/test1",active:false,children:[{
+                name:"test1/test1",path:"/demo/test1",active:false,children:[]
+            }]
         }]
     }];
     isShowLoading: boolean = false;
@@ -41,6 +47,11 @@ export  class IndexComponent extends Vue {
 
     created(){
         this.bindMenuList=Object.assign([],this.menus) ;
+
+    }
+
+
+    setParentActive(menuItem:MenuItem){
 
     }
     mounted(){
@@ -73,7 +84,13 @@ export  class IndexComponent extends Vue {
             this.bindMenuList=Object.assign([],this.menus);
             return;
         }
-        this.bindMenuList=this.menus.filter(p=>p.name.includes(text)) ;
+        this.bindMenuList=this.menus.filter(p=>this.findItem(p,text)) ;
+    }
+
+    findItem(item,text:string){
+         return item.name.includes(text)||item.children.some(p=>{
+             return this.findItem(p,text);
+         })
     }
 
     onLogout() {

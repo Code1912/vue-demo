@@ -1,12 +1,12 @@
-<li  :class="className"  @click="onClick" >
+<li  :class="className()"  @click="onClick" >
     <router-link :to="data.path">
-        <i class="fa fa-dashboard"></i> <span>{{data.name}}</span>
+        <i class="fa fa-dashboard"></i> <span>{{data.name}}  {{data.active}}</span>
         <span  v-if="data.children&&data.children.length>0"  class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
     </router-link>
 
-    <ul  v-if="data.children&&data.children.length>0" class="treeview-menu">
-         <menu-component :key="index"  :id=" data.name+'child'+index" :data="item" v-for="(item,index) of data.children" ></menu-component>
+    <ul v-show="showChildren()" v-if="data.children&&data.children.length>0" class="treeview-menu">
+         <menu-component  :key="index"  :level='level+1' :id=" data.name+'child'+index" :data="item" v-for="(item,index) of data.children" ></menu-component>
     </ul>
 </li>
