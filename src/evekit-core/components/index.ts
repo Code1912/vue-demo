@@ -3,6 +3,7 @@ import {EveModalComponent} from './ui-elements/eve-modal.component'
 import {EveTabItemComponent} from "./ui-elements/eve-tab-item.component";
 import {EveTabComponent} from "./ui-elements/eve-tab.component";
 import {EveCheckboxComponent} from "./forms/eve-checkbox.component";
+import {EveChartsComponent} from "./ui-elements/eve-charts.component";
 
 
 export {
@@ -10,7 +11,8 @@ export {
     EveModalComponent,
     EveTabItemComponent,
     EveTabComponent,
-    EveCheckboxComponent
+    EveCheckboxComponent,
+    EveChartsComponent
 }
 export const ALL_COMPONENTS = [{
     name: 'eve-loading',
@@ -31,4 +33,8 @@ export const ALL_COMPONENTS = [{
     {
         name: 'eve-checkbox',
         component: EveCheckboxComponent
+    },
+    {
+        name: 'eve-charts',
+        component: EveChartsComponent
     }];

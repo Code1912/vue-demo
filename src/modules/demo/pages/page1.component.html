@@ -94,22 +94,22 @@
                         <th>usage</th>
                     </tr>
                     <tr>
-                        <td  >value</td>
-                        <td>v-model </td>
-                        <td>chcekbox绑定值 </td>
-                        <td>v-model:value="xxxx" </td>
+                        <td>value</td>
+                        <td>v-model</td>
+                        <td>chcekbox绑定值</td>
+                        <td>v-model:value="xxxx"</td>
                     </tr>
                     <tr>
                         <td>name</td>
-                        <td>v-bind </td>
-                        <td>控件名字 </td>
-                        <td> :name='xxxx'  or  name:'string' </td>
+                        <td>v-bind</td>
+                        <td>控件名字</td>
+                        <td> :name='xxxx' or name:'string'</td>
                     </tr>
                     <tr>
                         <td>valueChange</td>
-                        <td>v-on </td>
-                        <td>value改变后触发事件 </td>
-                        <td>   v-on:valueChange="onCkValueChange" </td>
+                        <td>v-on</td>
+                        <td>value改变后触发事件</td>
+                        <td> v-on:valueChange="onCkValueChange"</td>
 
                     </tr>
 
@@ -118,6 +118,61 @@
             </eve-tab-item>
         </eve-tab>
 
+
+
+        <eve-tab header="EveCharts">
+            <eve-tab-item header="Demo">
+                <div>
+                    <button @click="onChangeOptions()">Change Options</button>
+                    <eve-charts :options="chartsOption" :height="300" :width="600">
+                    </eve-charts>
+                </div>
+            </eve-tab-item>
+
+            <eve-tab-item header="Code">
+                <pre>
+                        <code class="lang-typescript">
+        {{code.eveCharts}}
+                        </code>
+                 </pre>
+            </eve-tab-item>
+            <eve-tab-item header="Properties">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th style="width: 10px">Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>usage</th>
+                    </tr>
+                    <tr>
+                        <td>options</td>
+                        <td>v-bind</td>
+                        <td>图表数据属性</td>
+                        <td><p>
+                            <a href="http://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts">
+                             参考http://echarts.baidu.com/tutorial.html
+                            </a>
+                        </p> </td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>v-bind</td>
+                        <td>图表高度</td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>v-on</td>
+                        <td>图表宽度</td>
+                        <td> :width="width"</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </eve-tab-item>
+        </eve-tab>
         <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs.min.css" rel="stylesheet">-->
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atelier-plateau-dark.min.css" rel="stylesheet">-->
