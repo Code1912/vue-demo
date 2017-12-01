@@ -8,7 +8,7 @@ import {Input} from "../../common/input";
     template:  `<div :style="{height:height+'px',width:width+'px'}"></div>`
 })
 export  class EveChartsComponent extends Vue {
-    @Input()
+    @Input(true)
     options: any;
     @Input(true)
     height:Number;
@@ -26,7 +26,7 @@ export  class EveChartsComponent extends Vue {
     mounted(){
         this.charts = window.echarts.init(this.$el as any);
         if (this.options) {
-            this.charts.setOption(this.options );
+            this.charts.setOption(this.options,true,true );
         }
     }
 }
