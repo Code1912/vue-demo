@@ -56,7 +56,7 @@ export class Page1Component extends Vue {
 
     onHttpGet() {
 
-        this.httpService.get('http://www.google.com').then(res => {
+        this.httpService.get('http://www.baidu.com').then(res => {
             console.log(res)
         }).catch(error => {
             console.log(error)
