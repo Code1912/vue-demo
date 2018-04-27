@@ -9,7 +9,20 @@ declare  const  hljs:any;
 export class Page1Component extends Vue {
     haha: string = "hahhaha";
     tabSelectedIndex: number = 0;
+    dataColumns= [
+        {
+            title: '姓名',
+            key: 'name'
+        },
+        {
+            title: '地址',
+            key: 'address'
+        } 
 
+    ];
+    dataList= [];  
+    dataCount=100; 
+    pageSize=10;
     isShown = false;
     chartsOption = {
         title: {
@@ -80,6 +93,7 @@ export class Page1Component extends Vue {
     }
     created(){
         console.dir(this.cookieService);
+        this.onPageChange(0)
 
     }
     mounted() {
@@ -124,5 +138,17 @@ export class Page1Component extends Vue {
             console.log(res);
         });
         return promise;
+    }
+
+    onPageChange(index:number){ 
+        this.dataList.clear();
+        var idNo=index*this.pageSize+1
+        for (let index = 0; index < 10; index++) {
+            var no=idNo+index;
+            this.dataList.push({
+                name:'name'+no,
+                address:'address'+no
+            })
+        } 
     }
 }

@@ -6,7 +6,8 @@ let gulp = require("gulp4");
 let uglify = require("gulp-uglify");
 let concat = require("gulp-concat");
 let cssmin = require('gulp-minify-css');
-let taskUtil=require("./task.util")
+let taskUtil=require("./task.util");
+let gulpReplace= require('gulp-replace');
 let args=helpers.args();
 let env=args.env;
 
@@ -14,12 +15,13 @@ function  fullPath(pathArray) {
     return pathArray.map(p=>helpers.root(p));
 }
 gulp.task("vendor:js", function () {
-    return taskUtil.minifyJS(gulp.src(fullPath(assets[env].js))
-        .pipe(concat("vendor.js")))
+    return taskUtil.minifyJS(gulp.src(fullPath(assets[env].js)) 
+        .pipe(concat("vendor.js"))) 
         .pipe(gulp.dest(helpers.root('dist/assets/js')));
 });
 gulp.task("vendor:css", function () {
     return taskUtil.minifyCSS(gulp.src(fullPath(assets[env].css))
+        .pipe(gulpReplace('fonts/ionicons','../fonts/ionicons'))
         .pipe(concat("vendor.css")))
         .pipe(gulp.dest(helpers.root('dist/assets/css')));
 });

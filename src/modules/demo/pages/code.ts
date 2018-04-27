@@ -107,5 +107,50 @@ export const code = {
                 this.chartsOption=Object.assign({},this.chartsOption); 
         }
     } 
+    `,
+    table:`
+    import Vue from 'vue'
+    import {HttpService, ViewChild} from "evekit/core";
+    import Component from 'vue-class-component'
+    @Component({
+        template:\`   <div>
+                        <Table :columns="dataColumns" :data="dataList"></Table>
+                        <Page :total="dataCount" :page-size="pageSize" 
+                        show-total  @on-change="onPageChange"></Page>
+                    </div>\`
+    })
+    export class Page1Component extends Vue { 
+        dataColumns= [
+            {
+                title: '姓名',
+                key: 'name'
+            },
+            {
+                title: '地址',
+                key: 'address'
+            } 
+    
+        ];
+        dataList= [];  
+        dataCount=100; 
+        pageSize=10;
+
+        created(){ 
+            this.onPageChange(0)
+    
+        }
+        
+        onPageChange(index:number){ 
+            this.dataList.clear();
+            var idNo=index*this.pageSize+1
+            for (let index = 0; index < 10; index++) {
+                var no=idNo+index;
+                this.dataList.push({
+                    name:'name'+no,
+                    address:'address'+no
+                })
+            } 
+        }
+    } 
     `
 }

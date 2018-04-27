@@ -173,6 +173,22 @@
                 </table>
             </eve-tab-item>
         </eve-tab>
+        <eve-tab>
+            <eve-tab-item header='IView-Table'>
+                <div>
+                    <Table :columns="dataColumns" :data="dataList"></Table>
+                    <Page :total="dataCount" :page-size="pageSize" 
+                    show-total  @on-change="onPageChange"></Page>
+                  </div>
+            </eve-tab-item>
+            <eve-tab-item header='Code'>
+                <pre>
+                    <code class="lang-typescript">
+                     {{code.table}}
+                    </code>
+             </pre>
+            </eve-tab-item>
+        </eve-tab>
         <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs.min.css" rel="stylesheet">-->
         <!--<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atelier-plateau-dark.min.css" rel="stylesheet">-->
